@@ -1,0 +1,35 @@
+.persona-header{
+    background-color: #8cd0ef;
+    margin-bottom: 10px;
+}
+
+.persona-header-container{
+	display: flex;
+}
+
+.persona-details{
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.persona-name{
+	color: white;
+	font-weight: 500;
+    text-align: left;
+}
+
+.persona-twitter-handle{
+    color: white;
+    text-decoration: none;
+    text-align: left;
+}
+
+.persona-twitter-handle:hover{
+    text-decoration: underline;
+}
+
+.persona-avatar{
+	border-radius: 50%;
+    border-style: solid;
+    border-color: white;
+}
