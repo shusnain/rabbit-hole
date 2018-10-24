@@ -12,7 +12,7 @@ class Persona extends Component<Props>{
 			<Container>
 				<PersonaHeader />
 				<Row>
-					<Col xs={12} md={6} lg={4}>
+					<Col xs={12}>
 						<Content />
 					</Col>
 				</Row>

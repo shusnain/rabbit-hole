@@ -6,6 +6,7 @@
 	background-color: #d7fafa;
 	padding: 10px;
     border: 1px;
+    width: 100%;
 }
 
 @media (min-width: 576px) {
