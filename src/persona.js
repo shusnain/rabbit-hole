@@ -1,6 +1,6 @@
 //@ flow
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import PersonaHeader from './persona_header.js'
 import Content from './content/content.js'
 
@@ -9,14 +9,14 @@ var Props = {};
 class Persona extends Component<Props>{
 	render(){
 		return(
-			<Container>
+			<div>
 				<PersonaHeader />
 				<Row>
 					<Col xs={12}>
 						<Content />
 					</Col>
 				</Row>
-			</Container>
+			</div>
 		)
 	}
 }
