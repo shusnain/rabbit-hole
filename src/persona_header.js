@@ -1,5 +1,6 @@
 //@ flow
 import React, { Component } from 'react';
+import PropsType from 'prop-types'
 import { Card, CardText, CardBody } from 'reactstrap';
 import { Row, Col } from 'reactstrap';
 import './persona.css'
