@@ -3,6 +3,10 @@
 	padding-right: 10px;
 }
 
+.top-persona-card:hover{
+	cursor: pointer;
+}
+
 .top-persona-body{
 	display: inline-block;
 }

@@ -1,8 +1,10 @@
 //@ flow
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import { Container} from 'reactstrap';
-import Persona from './persona.js'
-import Header from './navs/header.js'
+import Header from './navs/header.js';
+import Homepage from './homepage.js';
+import Persona from './persona.js';
 import './App.css';
 
 class App extends Component {
@@ -10,7 +12,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-  			<Persona />
+        <Container>
+			<Route exact path ="/" component= {Homepage} />
+			<Route path ="/persona" component= {Persona} />
+		</Container>
       </div>
     );
   }

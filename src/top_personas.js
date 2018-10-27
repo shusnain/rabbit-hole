@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardBody, Row, Col } from 'reactstrap'
+import {Redirect} from 'react-router';
 import TwitterCard from './content/twitter_card.js'
+import './top_persona.css'
 
 type TopPersonaProps = {
 	persona_name: string,
@@ -13,29 +15,53 @@ type TopPersonaProps = {
 	top_tweet: string,
 };
 
+type State = {
+	redirect: boolean;
+};
+
 type TopPersonasProps = {
 	top_personas: PropTypes.Object,
 };
 
-class TopPersona extends Component<TopPersonaProps>{
+class TopPersona extends Component<TopPersonaProps, TopPersonaState>{
+
+	state = {
+		redirect: false
+	};
+
+	handleOnClick = () =>{
+		this.setState({
+			redirect: true
+		})
+	};
+
+	stopParentOnClick = (e) =>{
+		e.stopPropagation();
+	}
+
 	render(){
+
+		if(this.state.redirect){
+			return <Redirect push to="/persona" />;
+		}
+
 		return(
-			<Card className='persona-header'>
+			<Card className='top-persona-card persona-header' onClick={this.handleOnClick} >
 				<CardBody className='top-persona-body'>
 					<div className='persona-header-container'>
-						<a href={this.props.persona_twitter_url} target='_blank'>
+						<a href={this.props.persona_twitter_url} target='_blank' onClick={this.stopParentOnClick}>
 							<img className='persona-avatar' src={this.props.persona_avatar} />
 						</a>
 						<div class='persona-details'>
 							<div class='persona-name'>{this.props.persona_name_stylized}</div>
 							<span>
-								<a className='persona-twitter-handle' href={this.props.persona_twitter_url} target='_blank'>
+								<a className='persona-twitter-handle' href={this.props.persona_twitter_url} target='_blank' onClick={this.stopParentOnClick}>
 									{this.props.persona_twitter_handle}
 								</a>
 							</span>
 						</div>
 					</div>
-					<div className='top-persona-twitter-card'>
+					<div className='top-persona-twitter-card' onClick={this.stopParentOnClick}>
 						<TwitterCard tweet_paths={this.props.top_tweet} />
 					</div>
 				</CardBody>

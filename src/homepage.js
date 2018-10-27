@@ -13,11 +13,13 @@ var dummy_props ={
 	top_tweet: ['/naval/status/1052856864965152769','/naval/status/1052948164154613761','/naval/status/1052952734725419008'],
 };
 
-class Homepage extends Component<Props>{
+class Homepage extends Component<Props, State>{
+
 	render(){
+
 		return(
-			<div>
-				<TopPersonas top_personas={[dummy_props, dummy_props, dummy_props]} />
+			<div class='top-personas-container'>
+				<TopPersonas top_personas={[dummy_props, dummy_props, dummy_props]}/>
 			</div>
 		)
 	}
