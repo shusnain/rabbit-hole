@@ -21,13 +21,13 @@ var dummy_props ={
 	persona_twitter_handle: '@naval',
 };
 
-class PersonaHeader extends Component<Props>{
+class PersonaCard extends Component<Props>{
 	render(){
 		return(
-			<Card className='persona-header'>
+			<Card className='persona-card'>
 				<Row>
 					<Col xs={12}>
-						<CardBody className='persona-header-container'>
+						<CardBody className='persona-card-container'>
 							<a href={dummy_props.persona_twitter_url} target='_blank'>
 								<img class='persona-avatar' src={dummy_props.persona_avatar} />
 							</a>
@@ -47,4 +47,4 @@ class PersonaHeader extends Component<Props>{
 	}
 }
 
-export default PersonaHeader;
+export default PersonaCard;

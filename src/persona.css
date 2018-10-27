@@ -1,9 +1,9 @@
-.persona-header{
+.persona-card{
     background-color: #8cd0ef;
     margin-bottom: 10px;
 }
 
-.persona-header-container{
+.persona-card-container{
 	display: flex;
 }
 
