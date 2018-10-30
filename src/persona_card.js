@@ -29,10 +29,10 @@ class PersonaCard extends Component<Props>{
 					<Col xs={12}>
 						<CardBody className='persona-card-container'>
 							<a href={dummy_props.persona_twitter_url} target='_blank'>
-								<img class='persona-avatar' src={dummy_props.persona_avatar} />
+								<img className='persona-avatar' src={dummy_props.persona_avatar} />
 							</a>
-							<div class='persona-details'>
-								<div class='persona-name'>{dummy_props.persona_name_stylized}</div>
+							<div className='persona-details'>
+								<div className='persona-name'>{dummy_props.persona_name_stylized}</div>
 								<span>
 									<a className='persona-twitter-handle' href={dummy_props.persona_twitter_url} target='_blank'>
 										{dummy_props.persona_twitter_handle}

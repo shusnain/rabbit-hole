@@ -15,7 +15,7 @@ type TopPersonaProps = {
 	top_tweet: string,
 };
 
-type State = {
+type TopPersonaState = {
 	redirect: boolean;
 };
 
@@ -46,9 +46,9 @@ class TopPersona extends Component<TopPersonaProps, TopPersonaState>{
 		}
 
 		return(
-			<Card className='top-persona-card persona-header' onClick={this.handleOnClick} >
+			<Card className='top-persona-card persona-card' onClick={this.handleOnClick} >
 				<CardBody className='top-persona-body'>
-					<div className='persona-header-container'>
+					<div className='persona-card-container'>
 						<a href={this.props.persona_twitter_url} target='_blank' onClick={this.stopParentOnClick}>
 							<img className='persona-avatar' src={this.props.persona_avatar} />
 						</a>
@@ -73,7 +73,7 @@ class TopPersona extends Component<TopPersonaProps, TopPersonaState>{
 
 class TopPersonas extends Component<TopPersonasProps>{
 	render(){
-		console.log(this.props)
+		
 		var top_personas = this.props.top_personas.map((propsObject, i) =>
 			<Col xs={12} sm={4} className='top-persona-col' key={i}>
 				<TopPersona {...propsObject}/>
