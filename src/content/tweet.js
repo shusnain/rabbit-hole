@@ -5,7 +5,7 @@ import './content.css'
 type Props ={
 	tweet_path: string,
 	autoplay?: boolean,
-	card_type: string,
+	twitter_type: string,
 };
 
 
@@ -23,7 +23,7 @@ class Tweet extends Component<Props>{
 
 	autoPlayVideo= () => {
 		if(this.props.autoplay && 
-		 	this.props.card_type === 'twitter_video' &&
+		 	this.props.twitter_type === 'twitter_video' &&
 			document != null && 
 			document.querySelector('.modal') != null && // $FlowFixMe
 			document.querySelector('.modal').querySelector('.twitter-tweet') != null && // $FlowFixMe

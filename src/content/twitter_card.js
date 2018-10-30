@@ -8,7 +8,7 @@ import './content.css'
 
 type Props = {
 	tweet_paths: PropsType.Array,
-	card_type: string,
+	twitter_type: string,
 };
 
 type State = {
@@ -64,7 +64,7 @@ class TwitterCard extends Component<Props, State>{
 	getContent = () =>{
 		var contentIndex = this.contentIndex()
 		var currentContent = this.props.tweet_paths.slice(0, contentIndex)
-		return currentContent.map((tweet, index) => <Tweet key={index} tweet_path={tweet} card_type={this.props.card_type}/>)
+		return currentContent.map((tweet, index) => <Tweet key={index} tweet_path={tweet} twitter_type={this.props.twitter_type}/>)
 	};
 
 	getCardActions = () => {
@@ -90,7 +90,7 @@ class TwitterCard extends Component<Props, State>{
 		
 		return(
 			<div>
-				<TwitterModal ref='modal' tweet_paths={this.props.tweet_paths} card_type={this.props.card_type}/>
+				<TwitterModal ref='modal' tweet_paths={this.props.tweet_paths} twitter_type={this.props.twitter_type}/>
 				<Card className = 'twitter-card' onClick={this.toggleModal}>
 					<span class='disable-links'>
 						{content}

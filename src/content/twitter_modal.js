@@ -7,7 +7,7 @@ import './twitter_modal.css'
 
 type Props = {
   tweet_paths: PropsType.Array,
-  card_type: string,
+  twitter_type: string,
 };
 
 type State = {
@@ -30,7 +30,7 @@ class TwitterModal extends Component<Props, State> {
     return (
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalBody>
-            <TwitterList tweet_paths={this.props.tweet_paths} card_type={this.props.card_type}/>
+            <TwitterList tweet_paths={this.props.tweet_paths} twitter_type={this.props.twitter_type}/>
           </ModalBody>
         </Modal>
     );
