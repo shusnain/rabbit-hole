@@ -42,7 +42,7 @@ class TopPersona extends Component<TopPersonaProps, TopPersonaState>{
 	render(){
 
 		if(this.state.redirect){
-			return <Redirect push to="/persona" />;
+			return <Redirect push to={"/persona/" + this.props.persona_name}/>;
 		}
 
 		return(
