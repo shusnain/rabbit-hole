@@ -7,35 +7,62 @@ import './persona.css'
 
 type Props = {
 	persona_name: string,
+};
+
+type State = {
+	persona_name: string,
 	persona_name_stylized: string,
 	persona_avatar: string,
 	persona_twitter_url: string,
 	persona_twitter_handle: string,
 };
 
-var dummy_props ={
-	persona_name: 'naval',
-	persona_name_stylized: 'Naval',
-	persona_avatar: 'https://pbs.twimg.com/profile_images/749155852683055104/0StT9uYS_bigger.jpg',
-	persona_twitter_url: 'https://twitter.com/naval',
-	persona_twitter_handle: '@naval',
-};
+class PersonaCard extends Component<Props, State>{
 
-class PersonaCard extends Component<Props>{
+	state = {
+		persona_name: null,
+		persona_name_stylized: null,
+		persona_avatar: null,
+		persona_twitter_url: null,
+		persona_twitter_handle: null,
+	};
+
+	componentDidMount = () =>{
+		this.getPersona()
+	}
+
+	getPersona = () =>{
+		var content = this
+		fetch('http://localhost:8000/user/' + this.props.persona_name).then(function(response) {
+			if(response.status === 200){
+				return response.json();	
+			}
+  		}).then(function(response_json){
+  			var user = response_json;
+    		content.setState(state => ({
+				persona_name: user.twitter_name,
+				persona_name_stylized: user.twitter_name_stylized,
+				persona_avatar: user.twitter_avatar_url,
+				persona_twitter_url: user.twitter_user_url,
+				persona_twitter_handle: user.twitter_user_handle,
+			}))
+  		})
+	};
+
 	render(){
 		return(
 			<Card className='persona-card'>
 				<Row>
 					<Col xs={12}>
 						<CardBody className='persona-card-container'>
-							<a href={dummy_props.persona_twitter_url} target='_blank'>
-								<img className='persona-avatar' src={dummy_props.persona_avatar} />
+							<a href={this.state.persona_twitter_url} target='_blank'>
+								<img className='persona-avatar' src={this.state.persona_avatar} />
 							</a>
 							<div className='persona-details'>
-								<div className='persona-name'>{dummy_props.persona_name_stylized}</div>
+								<div className='persona-name'>{this.state.persona_name_stylized}</div>
 								<span>
-									<a className='persona-twitter-handle' href={dummy_props.persona_twitter_url} target='_blank'>
-										{dummy_props.persona_twitter_handle}
+									<a className='persona-twitter-handle' href={this.state.persona_twitter_url} target='_blank'>
+										{this.state.persona_twitter_handle}
 									</a>
 								</span>
 							</div>
