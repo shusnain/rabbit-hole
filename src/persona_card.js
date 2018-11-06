@@ -15,6 +15,7 @@ type State = {
 	persona_avatar: string,
 	persona_twitter_url: string,
 	persona_twitter_handle: string,
+	hide_class: string,
 };
 
 class PersonaCard extends Component<Props, State>{
@@ -25,6 +26,7 @@ class PersonaCard extends Component<Props, State>{
 		persona_avatar: null,
 		persona_twitter_url: null,
 		persona_twitter_handle: null,
+		hide_class: 'hide',
 	};
 
 	componentDidMount = () =>{
@@ -45,13 +47,14 @@ class PersonaCard extends Component<Props, State>{
 				persona_avatar: user.twitter_avatar_url,
 				persona_twitter_url: user.twitter_user_url,
 				persona_twitter_handle: user.twitter_user_handle,
+				hide_class: '',
 			}))
   		})
 	};
 
 	render(){
 		return(
-			<Card className='persona-card'>
+			<Card className={'persona-card ' + this.state.hide_class}>
 				<Row>
 					<Col xs={12}>
 						<CardBody className='persona-card-container'>

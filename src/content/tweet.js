@@ -37,7 +37,7 @@ class Tweet extends Component<Props>{
 		var autoPlay = this.autoPlayVideo();
 		return(
 			<div>
-				<blockquote className="twitter-tweet" data-conversation="none" data-lang="en" data-theme="light"><a href={this.createTweetURL()}></a></blockquote>
+				<blockquote className="twitter-tweet" data-conversation="none" data-lang="en" data-theme="light"><a href={this.props.tweet_path}></a></blockquote>
 			</div>
 )
 	}
