@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropsType from 'prop-types'
 import { Card, CardText, CardBody } from 'reactstrap';
 import { Row, Col } from 'reactstrap';
+import axios from 'axios'
 import './persona.css'
 
 type Props = {
@@ -35,13 +36,10 @@ class PersonaCard extends Component<Props, State>{
 
 	getPersona = () =>{
 		var content = this
-		fetch('http://localhost:8000/user/' + this.props.persona_name).then(function(response) {
-			if(response.status === 200){
-				return response.json();	
-			}
-  		}).then(function(response_json){
-  			var user = response_json;
-    		content.setState(state => ({
+
+  		axios.get('http://localhost:8000/user/' + this.props.persona_name).then(function(response){
+  			var user = response.data;
+  			content.setState(state => ({
 				persona_name: user.twitter_name,
 				persona_name_stylized: user.twitter_name_stylized,
 				persona_avatar: user.twitter_avatar_url,

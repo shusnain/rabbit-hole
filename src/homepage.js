@@ -49,11 +49,8 @@ class Homepage extends Component<Props, State>{
 
 		return(
 			<div>
-				<div>	
-					<TopTweets top_tweets={dummy_tweets}/>
-				</div>
 				<div class='top-personas-container'>
-					<TopPersonas top_personas={[dummy_persona_props_2, dummy_persona_props, dummy_persona_props]}/>
+					<TopPersonas top_personas={[dummy_persona_props_2, dummy_persona_props, dummy_persona_props, dummy_persona_props]}/>
 				</div>
 			</div>
 		)

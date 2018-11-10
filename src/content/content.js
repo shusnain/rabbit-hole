@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropsType from 'prop-types'
 import { CardColumns } from 'reactstrap';
 import TwitterCard from './twitter_card.js'
+import axios from 'axios'
 import './content.css'
 
 var cardSourceEnum = {
@@ -30,14 +31,9 @@ class Content extends Component<Props, State>{
 
 	getTweets = () =>{
 		var content = this
-		fetch('http://localhost:8000/tweets/' + this.props.persona_name).then(function(response) {
-			if(response.status === 200){
-				return response.json();	
-			}
-  		}).then(function(response_json){
-  			var tweets = response_json;
-    		content.setState(state => ({
-				content: tweets,
+  		axios.get('http://localhost:8000/tweets/' + this.props.persona_name).then(function(response){
+  			content.setState(state => ({
+				content: response.data,
 			}))
   		})
 	};
