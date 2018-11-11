@@ -28,7 +28,7 @@ class SearchUsers extends Component{
 
 	getUsers = (query) => {
 		var search = this
-		axios.get('http://localhost:8000/top_users/' + this.state.query).then(function(reponse){
+		axios.get('http://localhost:8000/search_users/' + this.state.query).then(function(reponse){
 			var users = reponse.data
 			search.setState({
 				users: users,
@@ -60,6 +60,7 @@ class SearchUsers extends Component{
 		     			ref={input => this.search = input}
 		     			onChange={this.handleInputChange}
 		     			className = 'search-input'
+		     			id = 'user-search-input'
 		   			/>
 		 		</form>
 		 		<div className={this.state.hide_suggestions}>
