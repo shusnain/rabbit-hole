@@ -1,0 +1,9 @@
+.search-suggestions-container{
+	background-color: #6ec6e7;
+	position: absolute;
+	z-index: 100;
+}
+
+.search-suggestions-list{
+	list-style-type: none;
+}

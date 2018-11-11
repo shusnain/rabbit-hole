@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import TopPersonas from './top_personas.js'
 import TopTweets from './top_tweets.js'
+import SearchUsers from './search_users.js'
 
 type Props = {};
 
@@ -49,6 +50,7 @@ class Homepage extends Component<Props, State>{
 
 		return(
 			<div>
+				<SearchUsers />
 				<div class='top-personas-container'>
 					<TopPersonas top_personas={[dummy_persona_props_2, dummy_persona_props, dummy_persona_props, dummy_persona_props]}/>
 				</div>
