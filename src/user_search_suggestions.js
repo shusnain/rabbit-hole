@@ -1,24 +1,23 @@
 //@ flow
 import React, { Component } from 'react';
-import { Card } from 'reactstrap';
+import { Card, DropdownItem, Row, Col, CardBody } from 'reactstrap';
+import PropsType from 'prop-types'
 import {Redirect} from 'react-router';
 import './search_suggestions.css'
 
-type Props = {
-	users: Array,
+type SuggestionProps = {
+	user: PropsType.Object,
 };
 
-class UserSearchSuggestions extends Component<Props>{
+class UserSuggestion extends Component<SuggestionProps>{
 	state = {
 		redirect: false,
-		redirect_persona: ''
 	}
 
 	handleOnClick = (e) =>{
 		if(e){
 			this.setState({
 				redirect: true,
-				redirect_persona: e.target.id,
 			})
 		}
 	}
@@ -26,21 +25,48 @@ class UserSearchSuggestions extends Component<Props>{
 	render(){
 
 		if(this.state.redirect){
-			return <Redirect push to={"/persona/" + this.state.redirect_persona}/>;
+			return <Redirect push to={"/persona/" + this.props.user.twitter_user}/>;
 		}
+
+		return(
+			<DropdownItem className='suggested-user-dropdown-item' onMouseDown={this.handleOnClick}>
+				<Row>
+					<Col xs={12}>
+						<CardBody className='suggested-user-card-container'>
+							<img className='suggested-user-avatar' src={this.props.user.twitter_avatar_url} />
+							<div className='suggested-user-details'>
+								<div className='suggested-user-name'>{this.props.user.twitter_name_stylized}</div>
+								<div className='suggested-user-twitter-handle'>
+									{this.props.user.twitter_user_handle}
+								</div>
+							</div>
+						</CardBody>
+					</Col>
+				</Row>
+			</DropdownItem>
+		)
+	}
+}
+
+type SuggestionsProps = {
+	users: Array,
+};
+
+class UserSearchSuggestions extends Component<SuggestionsProps>{
+
+	render(){
 
 		const suggestions = this.props.users.map((user) =>{
 			return(
-				<li id={user.twitter_user} onMouseDown={this.handleOnClick}>
-					{user.twitter_name_stylized}
-				</li>
+				<UserSuggestion user={user} />
 			)
 		})
 		return(
 			<Card className='search-suggestions-container'>
-				<ul className='search-suggestions-list'>
-					{suggestions}
-				</ul>
+				{/*<ul className='search-suggestions-list'>
+					
+				</ul>*/}
+				{suggestions}
 			</Card>
 		)
 	}
