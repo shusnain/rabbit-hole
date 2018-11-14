@@ -6,24 +6,6 @@ import axios from 'axios'
 
 type Props = {};
 
-var dummy_persona_props ={
-	persona_name: 'naval',
-	persona_name_stylized: 'Naval',
-	persona_avatar: 'https://pbs.twimg.com/profile_images/749155852683055104/0StT9uYS_bigger.jpg',
-	persona_twitter_url: 'https://twitter.com/naval',
-	persona_twitter_handle: '@naval',
-	top_tweet: ['https://twitter.com/naval/status/1052856864965152769','https://twitter.com/naval/status/1052948164154613761','https://twitter.com/naval/status/1052952734725419008'],
-};
-
-var dummy_persona_props_2 ={
-	persona_name: 'morganhousel',
-	persona_name_stylized: 'Morgan Housel',
-	persona_avatar: 'https://pbs.twimg.com/profile_images/1050020823119974400/X9muqhg1_bigger.jpg',
-	persona_twitter_url: 'https://twitter.com/morganhousel/',
-	persona_twitter_handle: '@morganhousel',
-	top_tweet: ['https://twitter.com/morganhousel/status/1003288465000321025'],
-};
-
 var dummy_tweets = {
 	'0': {
 			tweet_paths: ['https://twitter.com/naval/status/1051578799098195969'],
