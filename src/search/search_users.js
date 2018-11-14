@@ -61,6 +61,7 @@ class SearchUsers extends Component{
 		     			onChange={this.handleInputChange}
 		     			className = 'search-input'
 		     			id = 'user-search-input'
+		     			autocomplete='off'
 		   			/>
 		 		</form>
 		 		<div className={this.state.hide_suggestions}>

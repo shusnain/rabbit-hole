@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import TopPersonas from './top_personas.js'
 import TopTweets from './top_tweets.js'
+import axios from 'axios'
 
 type Props = {};
 
@@ -43,14 +44,47 @@ var dummy_tweets = {
 		},
 }
 
-class Homepage extends Component<Props, State>{
+class Homepage extends Component<Props>{
+
+	state = {
+		top_users_limit: 3,
+		top_personas: [],
+	}
+
+	componentDidMount = () =>{
+		this.getTopUsers()
+	}
+
+	getTopUsers = () =>{
+		var homepage = this
+  		axios.get('http://localhost:8000/top_users/' + this.state.top_users_limit + '/').then(function(response){
+  			console.log(response.data)
+  			var length = response.data.length
+  			var top_personas = []
+  			for(var i = 0; i < length; i++){
+  				var persona = response.data[i]
+  				var obj = {
+  							persona_name: persona.twitter_user,
+							persona_name_stylized: persona.twitter_name_stylized,
+							persona_avatar: persona.twitter_avatar_url,
+							persona_twitter_url: persona.twitter_user_url,
+							persona_twitter_handle: persona.twitter_user_handle,
+							top_tweet: ['https://twitter.com/morganhousel/status/1003288465000321025'],
+						}
+				top_personas.push(obj)
+				homepage.setState({
+					top_personas: top_personas,
+				})
+  			}
+  		})
+	};
 
 	render(){
 
 		return(
 			<div>
 				<div class='top-personas-container'>
-					<TopPersonas top_personas={[dummy_persona_props_2, dummy_persona_props, dummy_persona_props, dummy_persona_props]}/>
+					<TopPersonas top_personas={this.state.top_personas}/>
 				</div>
 			</div>
 		)
